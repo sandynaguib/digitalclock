@@ -537,6 +537,9 @@ int main(void)
 {
 unsigned long int Time;
 unsigned int temp_counter = 0;
+// DISABLE JTAG (Must write twice within 4 cycles)
+MCUCSR |= (1<<JTD);
+MCUCSR |= (1<<JTD);
 
 DDRB=0xff;
 DDRA=0xE0;  // PA0 is input for ADC, PA5-PA7 outputs
@@ -573,4 +576,5 @@ settingTime();
 setTime();
 }
     }
+
 }
